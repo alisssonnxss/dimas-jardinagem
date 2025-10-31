@@ -3,428 +3,367 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dimas Jardinagem | Seu Especialista em Paisagismo e Manutenção</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
+    <title>DIMAS | Jardinagem & Serviços: Grama, Limpeza de Lotes e Plantação</title>
+    <!-- Carregamento do Tailwind CSS para um design moderno e responsivo -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configuração do Tailwind para usar a fonte Inter e cores personalizadas -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dimas-green': '#006400', // Verde escuro (Dark Green)
+                        'dimas-light': '#D6F6D6', // Verde muito claro
+                        'dimas-accent': '#FFD700', // Dourado/Amarelo para destaque
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <!-- Estilos personalizados para o botão de WhatsApp e a seção Galeria -->
     <style>
-        /* Base e Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* Estilização para o botão flutuante de WhatsApp */
+        #whatsapp-button {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 50;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            animation: pulse 2s infinite; /* Efeito de pulso para chamar atenção */
         }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-            color: #343a40; /* Texto escuro e profissional */
-            background-color: #f8f9fa; /* Fundo levemente cinza */
-            scroll-behavior: smooth;
+        #whatsapp-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            animation: none;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        /* Efeito de pulso (animação) */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
         }
 
-        /* Cores Profissionais */
-        :root {
-            --color-primary: #28a745; /* Verde Vibrante */
-            --color-secondary: #e2e6ea; /* Fundo de seção */
-            --color-accent: #ffc107; /* Amarelo/Ouro para destaque */
-            --color-text: #343a40;
-            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        }
-
-        /* Tipografia */
-        h1, h2, h3 {
-            font-weight: 600;
-            margin-bottom: 20px;
-            color: var(--color-primary);
-        }
-        h2 { font-size: 2.5em; }
-        h3 { font-size: 1.8em; }
-
-        /* Botões */
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            margin-top: 25px;
-            border-radius: 50px; /* Botões arredondados */
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border: 2px solid transparent;
-        }
-
-        .btn-primary {
-            background-color: var(--color-primary);
-            color: white;
-            border-color: var(--color-primary);
-        }
-
-        .btn-primary:hover {
-            background-color: #1e7e34;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(40, 167, 69, 0.4);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--color-primary);
-            border-color: var(--color-primary);
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--color-primary);
-            color: white;
-        }
-
-        .btn-whatsapp {
-            background-color: #25d366;
-            color: white;
-            border-color: #25d366;
-        }
-        .btn-whatsapp:hover {
-            background-color: #1f9c46;
-        }
-
-        /* Cabeçalho e Navegação */
-        header {
-            background-color: white;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            color: var(--color-primary);
-            font-size: 1.8em;
-            font-weight: 700;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: var(--color-text);
-            padding: 10px 18px;
-            display: block;
-            transition: color 0.3s;
-        }
-        nav ul li a:hover {
-            color: var(--color-primary);
-        }
-
-        .menu-toggle {
-            display: none; 
-            background: none;
-            border: none;
-            font-size: 1.8em;
+        /* Efeito de hover nas fotos da galeria (Story) */
+        .story-card {
+            transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+            overflow: hidden;
             cursor: pointer;
-            color: var(--color-primary);
+            border: 3px solid transparent;
         }
 
-        /* Seções Gerais */
-        section {
-            padding: 80px 0;
-            text-align: center;
+        .story-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: #FFD700;
         }
 
-        .light-bg {
-            background-color: var(--color-secondary);
+        .story-card img {
+            transition: transform 0.5s ease-in-out;
         }
 
-        /* Seção Hero */
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('placeholder-background.jpg'); /* Adicione uma imagem de fundo aqui */
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 150px 0;
+        .story-card:hover img {
+            transform: scale(1.1);
         }
 
-        .hero h2 {
-            color: white;
-            font-size: 3.5em;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-        .hero p {
-            font-size: 1.5em;
-            font-weight: 300;
-        }
-
-        /* Grid de Serviços e Portfólio */
-        .servicos-grid, .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .servico-item {
-            padding: 30px;
-            border-radius: 10px;
-            background-color: white;
-            box-shadow: var(--box-shadow);
-            transition: transform 0.3s;
-        }
-        .servico-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-        }
-        .servico-item h4 {
-            color: var(--color-primary);
-            font-weight: 600;
-        }
-
-        .portfolio-item img {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Formulário de Contato */
-        #contact-form {
-            max-width: 650px;
-            margin: 40px auto;
-            text-align: left;
-            padding: 30px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: var(--box-shadow);
-        }
-
-        #contact-form input, #contact-form textarea {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 20px;
-            border: 1px solid #ced4da;
-            border-radius: 5px;
-            font-family: inherit;
-        }
-        
-        .whatsapp-info {
-            margin-top: 30px;
-            font-size: 1.1em;
-        }
-
-        /* Rodapé */
-        footer {
-            background-color: #343a40;
-            color: #ccc;
-            padding: 30px 0;
-            text-align: center;
-            font-size: 0.9em;
-        }
-
-        footer a {
-            color: var(--color-accent);
-            text-decoration: none;
-        }
-
-        /* MEDIA QUERIES (Responsividade) */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: row-reverse;
-            }
-            .logo {
-                font-size: 1.5em;
-            }
-            .menu-toggle {
-                display: block; 
-            }
-            nav {
-                position: absolute;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background-color: white;
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-                display: none; 
-            }
-            nav.open {
-                display: block; 
-            }
-            nav ul {
-                flex-direction: column;
-                padding: 10px 0;
-            }
-            nav ul li a {
-                padding: 15px 20px;
-                border-bottom: 1px solid #eee;
-            }
-            .hero {
-                padding: 100px 0;
-            }
-            .hero h2 {
-                font-size: 2.5em;
-            }
-            .social-proof ul {
-                flex-direction: column;
-            }
+        /* Classes para scroll suave */
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 </head>
-<body>
+<body class="bg-dimas-light text-stone-800 font-sans">
 
-    <header>
-        <div class="container header-content">
-            <h1 class="logo">Dimas Jardinagem</h1>
-            <button class="menu-toggle" aria-label="Abrir Menu">
-                <i class="fas fa-bars"></i>
-            </button>
-            <nav id="main-nav">
-                <ul>
-                    <li><a href="#inicio">Início</a></li>
-                    <li><a href="#servicos">Serviços</a></li>
-                    <li><a href="#portfolio">Portfólio</a></li>
-                    <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#contato">Contato</a></li>
-                </ul>
+    <!-- Botão Flutuante do WhatsApp (Sempre visível) -->
+    <a id="whatsapp-button" 
+       href="https://wa.me/5561999084942?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20servi%C3%A7os%20de%20jardinagem%20da%20DIMAS." 
+       target="_blank" 
+       class="flex items-center justify-center w-16 h-16 bg-green-500 rounded-full text-white">
+        <!-- Ícone do WhatsApp (SVG) -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.477 2 2 6.477 2 12c0 3.189 1.488 6.046 3.824 7.85l-.547 1.954 2.001-.527a9.782 9.782 0 0 0 5.093 1.223c5.523 0 10-4.477 10-10S17.523 2 12 2zm3.176 13.921c-.057.198-.372.378-.654.414-.282.036-.583.054-.884-.018-.601-.137-1.303-.393-2.028-.857-1.428-.925-2.274-2.52-3.41-.057-.25.015-.478.187-.649.172-.172.379-.244.577-.244.172 0 .285.006.399.036.085.021.189.048.33.32.141.272.482 1.054.524 1.134.042.08.068.18.01 
+            .33-.057.151-.097.234-.149.336-.051.102-.104.184-.047.348.15.421.431.758.749.972.318.214.654.278.966.307.282.027.518.027.702-.12.184-.147.599-.619.721-.833.122-.214.244-.244.406-.244.162 0 .42.081.583.162.163.081.258.195.289.307.03.112.03.65-.24 1.196-.282.546-.619.577-.966.621z"/>
+        </svg>
+    </a>
+
+    <!-- Seção de Cabeçalho/Navegação -->
+    <header class="bg-dimas-green shadow-xl sticky top-0 z-40">
+        <div class="container mx-auto flex justify-between items-center p-4">
+            <h1 class="text-3xl font-extrabold text-white tracking-widest">DIMAS</h1>
+            <nav class="hidden md:flex space-x-6 text-white font-medium">
+                <a href="#inicio" class="hover:text-dimas-accent transition duration-300">Início</a>
+                <a href="#servicos" class="hover:text-dimas-accent transition duration-300">Serviços</a>
+                <a href="#galeria" class="hover:text-dimas-accent transition duration-300">Galeria</a>
+                <a href="#contato" class="hover:text-dimas-accent transition duration-300">Contato</a>
             </nav>
+            <!-- Menu mobile (simplesmente mostra o nome no mobile, pode ser expandido se necessário) -->
+            <button class="md:hidden text-white text-sm border border-white px-3 py-1 rounded hover:bg-white hover:text-dimas-green transition duration-300" onclick="document.getElementById('whatsapp-button').click()">
+                Orçamento
+            </button>
         </div>
     </header>
 
-    <section id="inicio" class="hero">
-        <div class="container">
-            <h2>Transforme seu Espaço Verde. Conte com a Expertise de Dimas.</h2>
-            <p>Especialista em paisagismo e manutenção, garantindo a saúde e a beleza do seu jardim.</p>
-            <a href="https://wa.me/SEUNUMERO" target="_blank" class="btn btn-primary">
-                <i class="fab fa-whatsapp"></i> Solicite Seu Orçamento Rápido
-            </a>
-        </div>
-    </section>
+    <main class="pt-10">
 
-    <section id="servicos">
-        <div class="container">
-            <h3>Nossos Serviços Exclusivos</h3>
-            <div class="servicos-grid">
-                <div class="servico-item">
-                    <h4>Manutenção Periódica</h4>
-                    <p>Pacotes completos para corte, poda, adubação e limpeza, mantendo seu jardim impecável o ano todo.</p>
-                </div>
-                <div class="servico-item">
-                    <h4>Paisagismo e Projeto</h4>
-                    <p>Desenvolvimento de projetos do zero, seleção de espécies ideais e implantação da área verde dos seus sonhos.</p>
-                </div>
-                <div class="servico-item">
-                    <h4>Podas Técnicas e Tratamentos</h4>
-                    <p>Serviços especializados em podas de árvores e combate profissional contra pragas e doenças.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="portfolio" class="light-bg">
-        <div class="container">
-            <h3>Portfólio: Nossos Melhores Trabalhos</h3>
-            <p>A qualidade e o cuidado que dedicamos a cada transformação. Veja o **Antes & Depois**.</p>
-            <div class="portfolio-grid">
-                <div class="portfolio-item"><img src="placeholder-jardim1.jpg" alt="Jardim Residencial Moderno"></div>
-                <div class="portfolio-item"><img src="placeholder-jardim2.jpg" alt="Revitalização de Condomínio"></div>
-                <div class="portfolio-item"><img src="placeholder-jardim3.jpg" alt="Poda Profissional de Frutífera"></div>
-            </div>
-            <a href="#contato" class="btn btn-secondary">Quero um Projeto de Qualidade!</a>
-        </div>
-    </section>
-
-    <section id="sobre">
-        <div class="container">
-            <h3>Sobre Dimas Jardinagem: Confiança e Paixão</h3>
-            <p>Meu nome é Dimas (Audimar Barbosa de Araujo), e a jardinagem é a minha arte. Atuando em **[SUA CIDADE/REGIÃO]**, construí minha reputação no compromisso com a beleza e a saúde das plantas.</p>
-            <p>Somos uma empresa formalizada (CNPJ **40.145.408/0001-76**), o que garante a segurança e o profissionalismo que clientes residenciais e corporativos buscam.</p>
-            <div class="social-proof">
-                <h4>Nossos Diferenciais:</h4>
-                <ul>
-                    <li>🌱 Expertise Comprovada</li>
-                    <li>⏱️ Serviço Rápido e Limpo</li>
-                    <li>🔒 Formalização e Garantia</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section id="contato" class="light-bg">
-        <div class="container">
-            <h3>Entre em Contato e Peça Seu Orçamento</h3>
-            <form id="contact-form">
-                <input type="text" name="nome" placeholder="Seu Nome" required>
-                <input type="email" name="email" placeholder="Seu E-mail" required>
-                <input type="tel" name="telefone" placeholder="WhatsApp (DDD) XXXX-XXXX" required>
-                <textarea name="mensagem" placeholder="Descreva o serviço que você precisa e o endereço..." rows="5" required></textarea>
-                <button type="submit" class="btn btn-primary">Enviar Solicitação</button>
-            </form>
-            <p class="whatsapp-info">
-                Prefere falar direto? 
-                <a href="https://wa.me/SEUNUMERO" target="_blank" class="btn btn-whatsapp">
-                    <i class="fab fa-whatsapp"></i> (DDD) XXXX-XXXX
+        <!-- 1. Seção Principal (Hero) -->
+        <section id="inicio" class="relative bg-dimas-green/90 text-white py-20 md:py-32 overflow-hidden">
+            <!-- Padrão de fundo suave -->
+            <div class="absolute inset-0 bg-repeat opacity-5" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'10\' height=\'10\' viewBox=\'0 0 2 2\'><path fill=\'%23FFFFFF\' d=\'M1 0h1v1H1V0zm0 1h1v1H1V1zM0 1h1v1H0V1zm0-1h1v1H0V0z\' fill-opacity=\'.1\'/></svg>');"></div>
+            
+            <div class="container mx-auto px-6 text-center relative z-10">
+                <h2 class="text-4xl md:text-6xl font-extrabold mb-4 animate-fadeInDown">
+                    DIMAS: O Seu Jardim, Nossa Paixão.
+                </h2>
+                <p class="text-xl md:text-2xl mb-8 font-light text-dimas-light animate-fadeIn">
+                    Especialistas em Venda de Grama, Limpeza de Lotes e Plantação com Qualidade Garantida.
+                </p>
+                <a href="#servicos" class="inline-block bg-dimas-accent text-dimas-green font-bold py-3 px-8 rounded-full text-lg uppercase transition duration-300 transform hover:scale-105 hover:bg-yellow-400 shadow-lg">
+                    Conheça Nossos Serviços
                 </a>
-            </p>
-        </div>
-    </section>
+            </div>
+        </section>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Dimas Jardinagem. Todos os direitos reservados.</p>
-            <p>CNPJ: 40.145.408/0001-76 | Audimar Barbosa de Araujo</p>
+        <!-- 2. Seção de Serviços -->
+        <section id="servicos" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <h3 class="text-3xl md:text-4xl font-bold text-center mb-12 text-dimas-green border-b-4 border-dimas-accent inline-block pb-1">
+                    Nossos Principais Serviços
+                </h3>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    
+                    <!-- Card 1: Venda de Grama -->
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:translate-y-[-5px] border-l-4 border-green-500">
+                        <div class="text-5xl mb-4 text-green-600">🌿</div>
+                        <h4 class="text-2xl font-semibold mb-3 text-dimas-green">Venda de Grama de Qualidade</h4>
+                        <p class="text-gray-600">
+                            Fornecemos os melhores tipos de grama (Esmeralda, São Carlos, Batatais) diretamente do produtor. Grama fresca, saudável e pronta para transformar seu espaço. Consulte nossas opções por m².
+                        </p>
+                        <a href="#" onclick="document.getElementById('whatsapp-button').click()" class="mt-4 block text-dimas-green font-semibold hover:text-dimas-accent transition duration-300">
+                            Orçar Venda &rarr;
+                        </a>
+                    </div>
+
+                    <!-- Card 2: Limpeza de Lotes -->
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:translate-y-[-5px] border-l-4 border-dimas-accent">
+                        <div class="text-5xl mb-4 text-dimas-accent">🚧</div>
+                        <h4 class="text-2xl font-semibold mb-3 text-dimas-green">Limpeza e Roçagem de Lotes</h4>
+                        <p class="text-gray-600">
+                            Serviço essencial para a manutenção e valorização do seu terreno. Realizamos roçagem completa, capina e retirada de entulhos, deixando seu lote limpo e conforme as exigências municipais.
+                        </p>
+                        <a href="#" onclick="document.getElementById('whatsapp-button').click()" class="mt-4 block text-dimas-green font-semibold hover:text-dimas-accent transition duration-300">
+                            Orçar Limpeza &rarr;
+                        </a>
+                    </div>
+                    
+                    <!-- Card 3: Plantação de Grama -->
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:translate-y-[-5px] border-l-4 border-green-500">
+                        <div class="text-5xl mb-4 text-green-600">🌱</div>
+                        <h4 class="text-2xl font-semibold mb-3 text-dimas-green">Instalação Profissional</h4>
+                        <p class="text-gray-600">
+                            Nossa equipe especializada garante o plantio correto da grama, com preparo do solo e nivelamento, para que seu gramado cresça forte e bonito. Serviço rápido e com garantia de pegamento.
+                        </p>
+                        <a href="#" onclick="document.getElementById('whatsapp-button').click()" class="mt-4 block text-dimas-green font-semibold hover:text-dimas-accent transition duration-300">
+                            Orçar Plantação &rarr;
+                        </a>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Seção Galeria / Stories (Espaço para Fotos) -->
+        <section id="galeria" class="py-16 md:py-24 bg-dimas-light">
+            <div class="container mx-auto px-6">
+                <h3 class="text-3xl md:text-4xl font-bold text-center mb-12 text-dimas-green border-b-4 border-dimas-green inline-block pb-1">
+                    Galeria DIMAS: Nossa Qualidade em Fotos
+                </h3>
+                <p class="text-center text-xl mb-12 text-gray-600">
+                    Confira a transformação que a DIMAS Jardinagem pode fazer no seu espaço.
+                </p>
+
+                <!-- Grid responsivo para as fotos (Story-like) -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
+                    
+                    <!-- Item 1: Lote Antes -->
+                    <div class="story-card bg-white rounded-xl shadow-md">
+                        <img src="https://placehold.co/400x550/9CA3AF/FFFFFF?text=Lote+Antes" 
+                             onerror="this.src='https://placehold.co/400x550/9CA3AF/FFFFFF?text=Lote+Antes'"
+                             alt="[Imagem de Lote Antes da Limpeza]" 
+                             class="w-full h-48 object-cover rounded-t-xl" />
+                        <div class="p-3">
+                            <p class="font-semibold text-sm text-dimas-green">#LimpezaDeLote</p>
+                            <p class="text-xs text-gray-500">Antes da Roçagem</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 2: Lote Depois -->
+                    <div class="story-card bg-white rounded-xl shadow-md">
+                        <img src="https://placehold.co/400x550/34D399/000000?text=Lote+Depois" 
+                             onerror="this.src='https://placehold.co/400x550/34D399/000000?text=Lote+Depois'"
+                             alt="[Imagem de Lote Após a Limpeza]" 
+                             class="w-full h-48 object-cover rounded-t-xl" />
+                        <div class="p-3">
+                            <p class="font-semibold text-sm text-dimas-green">#ResultadoLimpo</p>
+                            <p class="text-xs text-gray-500">Terreno pronto para uso</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 3: Venda/Entrega de Grama -->
+                    <div class="story-card bg-white rounded-xl shadow-md">
+                        <img src="https://placehold.co/400x550/10B981/FFFFFF?text=Grama+Fresca" 
+                             onerror="this.src='https://placehold.co/400x550/10B981/FFFFFF?text=Grama+Fresca'"
+                             alt="[Imagem de Rolos de Grama Fresca]" 
+                             class="w-full h-48 object-cover rounded-t-xl" />
+                        <div class="p-3">
+                            <p class="font-semibold text-sm text-dimas-green">#GramaEsmeralda</p>
+                            <p class="text-xs text-gray-500">Entrega Rápida</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 4: Plantação em Andamento -->
+                    <div class="story-card bg-white rounded-xl shadow-md">
+                        <img src="https://placehold.co/400x550/06B6D4/FFFFFF?text=Plantio+Profissional" 
+                             onerror="this.src='https://placehold.co/400x550/06B6D4/FFFFFF?text=Plantio+Profissional'"
+                             alt="[Imagem do Processo de Instalação de Grama]" 
+                             class="w-full h-48 object-cover rounded-t-xl" />
+                        <div class="p-3">
+                            <p class="font-semibold text-sm text-dimas-green">#Instalação</p>
+                            <p class="text-xs text-gray-500">Nivelamento e Cuidado</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 5: Jardim Finalizado -->
+                    <div class="story-card bg-white rounded-xl shadow-md">
+                        <img src="https://placehold.co/400x550/34D399/000000?text=Jardim+Perfeito" 
+                             onerror="this.src='https://placehold.co/400x550/34D399/000000?text=Jardim+Perfeito'"
+                             alt="[Imagem de Gramado/Jardim Finalizado]" 
+                             class="w-full h-48 object-cover rounded-t-xl" />
+                        <div class="p-3">
+                            <p class="font-semibold text-sm text-dimas-green">#AntesEDepois</p>
+                            <p class="text-xs text-gray-500">Cliente Satisfeito</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Adicione mais itens aqui! -->
+                    <div class="story-card bg-white rounded-xl shadow-md hidden sm:block">
+                        <img src="https://placehold.co/400x550/6B7280/FFFFFF?text=Projeto+Extra" 
+                             onerror="this.src='https://placehold.co/400x550/6B7280/FFFFFF?text=Projeto+Extra'"
+                             alt="[Imagem de um Projeto Adicional]" 
+                             class="w-full h-48 object-cover rounded-t-xl" />
+                        <div class="p-3">
+                            <p class="font-semibold text-sm text-dimas-green">#Manutenção</p>
+                            <p class="text-xs text-gray-500">Poda de Arbustos</p>
+                        </div>
+                    </div>
+                    
+                    <div class="story-card bg-white rounded-xl shadow-md hidden lg:block">
+                        <img src="https://placehold.co/400x550/9CA3AF/FFFFFF?text=Paisagismo" 
+                             onerror="this.src='https://placehold.co/400x550/9CA3AF/FFFFFF?text=Paisagismo'"
+                             alt="[Imagem de Trabalho de Paisagismo]" 
+                             class="w-full h-48 object-cover rounded-t-xl" />
+                        <div class="p-3">
+                            <p class="font-semibold text-sm text-dimas-green">#Paisagismo</p>
+                            <p class="text-xs text-gray-500">Detalhes que importam</p>
+                        </div>
+                    </div>
+                    
+                    <div class="story-card bg-white rounded-xl shadow-md hidden xl:block">
+                        <img src="https://placehold.co/400x550/FCD34D/000000?text=Maquinário" 
+                             onerror="this.src='https://placehold.co/400x550/FCD34D/000000?text=Maquinário'"
+                             alt="[Imagem de Equipamento]" 
+                             class="w-full h-48 object-cover rounded-t-xl" />
+                        <div class="p-3">
+                            <p class="font-semibold text-sm text-dimas-green">#Equipamentos</p>
+                            <p class="text-xs text-gray-500">Prontos para Servir</p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Seção Chamada para Ação / Contato -->
+        <section id="contato" class="py-16 md:py-24 bg-dimas-green text-white">
+            <div class="container mx-auto px-6 text-center">
+                <h3 class="text-4xl md:text-5xl font-extrabold mb-4">
+                    Pronto para Transformar Seu Espaço?
+                </h3>
+                <p class="text-xl mb-8 opacity-90">
+                    Fale com a DIMAS hoje mesmo e solicite um orçamento sem compromisso!
+                </p>
+                
+                <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8">
+                    
+                    <!-- Botão de Orçamento Principal -->
+                    <a href="#" onclick="document.getElementById('whatsapp-button').click()" 
+                       class="inline-block bg-dimas-accent text-dimas-green font-bold py-3 px-10 rounded-lg text-xl uppercase transition duration-300 transform hover:scale-105 hover:shadow-xl shadow-md w-full md:w-auto text-center">
+                        Chamar no WhatsApp
+                    </a>
+
+                    <!-- Informações de Contato -->
+                    <div class="text-left bg-dimas-green/70 p-4 rounded-lg w-full md:w-auto">
+                        <p class="font-semibold mb-1">Telefone: (61) 99908-4942</p>
+                        <p class="font-semibold">Email: contato@dimasjardinagem.com.br</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="bg-stone-800 text-dimas-light py-8">
+        <div class="container mx-auto px-6 text-center text-sm">
+            <p class="mb-4">DIMAS Jardinagem & Serviços | Grama, Limpeza de Lotes e Plantação</p>
+            <div class="space-x-4">
+                <a href="#inicio" class="hover:text-dimas-accent transition duration-300">Início</a>
+                <a href="#servicos" class="hover:text-dimas-accent transition duration-300">Serviços</a>
+                <a href="#galeria" class="hover:text-dimas-accent transition duration-300">Galeria</a>
+            </div>
+            <p class="mt-4">&copy; 2025 Todos os direitos reservados.</p>
         </div>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuToggle = document.querySelector('.menu-toggle');
-            const nav = document.getElementById('main-nav');
-            const navLinks = nav.querySelectorAll('a');
+        // Função para simular um modal/alerta (substituindo o alert() padrão)
+        function showMessage(message, type = 'info') {
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                padding: 20px 40px;
+                border-radius: 12px;
+                background-color: ${type === 'success' ? '#10B981' : '#FBBF24'};
+                color: white;
+                font-size: 18px;
+                font-weight: bold;
+                z-index: 1000;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+                opacity: 0;
+                transition: opacity 0.3s ease-in-out;
+            `;
+            modal.textContent = message;
+            document.body.appendChild(modal);
 
-            // 1. Funcionalidade para Menu Mobile
-            menuToggle.addEventListener('click', function() {
-                nav.classList.toggle('open');
-            });
+            // Mostrar e esconder com efeito
+            setTimeout(() => modal.style.opacity = 1, 10);
+            setTimeout(() => {
+                modal.style.opacity = 0;
+                setTimeout(() => modal.remove(), 300);
+            }, 3000);
+        }
 
-            // 2. Fechar o menu ao clicar em um link
-            navLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    // Timeout para permitir a rolagem suave antes de fechar
-                    setTimeout(() => {
-                        if (nav.classList.contains('open')) {
-                            nav.classList.remove('open');
-                        }
-                    }, 300); 
-                });
-            });
-
-            // 3. Funcionalidade de Envio do Formulário (Apenas um placeholder)
-            const contactForm = document.getElementById('contact-form');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    // ESTA PARTE REQUER UM BACKEND (servidor) para realmente enviar os dados.
-                    alert('Sua solicitação foi enviada! Dimas responderá em breve. (Isto é um alerta de demonstração)');
-                    // e.preventDefault(); // Descomente para que a página não recarregue após o envio.
-                });
-            }
-
-        });
+        // Mensagem de boas-vindas no console
+        console.log("DIMAS Jardinagem & Serviços - Site Inicializado com número de WhatsApp!");
     </script>
-
 </body>
 </html>
