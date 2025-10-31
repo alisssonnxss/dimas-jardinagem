@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dimas Jardinagem | Seu Especialista em Paisagismo e Manutenção</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* Base e Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #343a40; /* Texto escuro e profissional */
+            background-color: #f8f9fa; /* Fundo levemente cinza */
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Cores Profissionais */
+        :root {
+            --color-primary: #28a745; /* Verde Vibrante */
+            --color-secondary: #e2e6ea; /* Fundo de seção */
+            --color-accent: #ffc107; /* Amarelo/Ouro para destaque */
+            --color-text: #343a40;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Tipografia */
+        h1, h2, h3 {
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--color-primary);
+        }
+        h2 { font-size: 2.5em; }
+        h3 { font-size: 1.8em; }
+
+        /* Botões */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            margin-top: 25px;
+            border-radius: 50px; /* Botões arredondados */
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: white;
+            border-color: var(--color-primary);
+        }
+
+        .btn-primary:hover {
+            background-color: #1e7e34;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(40, 167, 69, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--color-primary);
+            border-color: var(--color-primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--color-primary);
+            color: white;
+        }
+
+        .btn-whatsapp {
+            background-color: #25d366;
+            color: white;
+            border-color: #25d366;
+        }
+        .btn-whatsapp:hover {
+            background-color: #1f9c46;
+        }
+
+        /* Cabeçalho e Navegação */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: var(--color-primary);
+            font-size: 1.8em;
+            font-weight: 700;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--color-text);
+            padding: 10px 18px;
+            display: block;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: var(--color-primary);
+        }
+
+        .menu-toggle {
+            display: none; 
+            background: none;
+            border: none;
+            font-size: 1.8em;
+            cursor: pointer;
+            color: var(--color-primary);
+        }
+
+        /* Seções Gerais */
+        section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .light-bg {
+            background-color: var(--color-secondary);
+        }
+
+        /* Seção Hero */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('placeholder-background.jpg'); /* Adicione uma imagem de fundo aqui */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 150px 0;
+        }
+
+        .hero h2 {
+            color: white;
+            font-size: 3.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .hero p {
+            font-size: 1.5em;
+            font-weight: 300;
+        }
+
+        /* Grid de Serviços e Portfólio */
+        .servicos-grid, .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .servico-item {
+            padding: 30px;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s;
+        }
+        .servico-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        .servico-item h4 {
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Formulário de Contato */
+        #contact-form {
+            max-width: 650px;
+            margin: 40px auto;
+            text-align: left;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--box-shadow);
+        }
+
+        #contact-form input, #contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+        
+        .whatsapp-info {
+            margin-top: 30px;
+            font-size: 1.1em;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: #343a40;
+            color: #ccc;
+            padding: 30px 0;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        footer a {
+            color: var(--color-accent);
+            text-decoration: none;
+        }
+
+        /* MEDIA QUERIES (Responsividade) */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: row-reverse;
+            }
+            .logo {
+                font-size: 1.5em;
+            }
+            .menu-toggle {
+                display: block; 
+            }
+            nav {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                display: none; 
+            }
+            nav.open {
+                display: block; 
+            }
+            nav ul {
+                flex-direction: column;
+                padding: 10px 0;
+            }
+            nav ul li a {
+                padding: 15px 20px;
+                border-bottom: 1px solid #eee;
+            }
+            .hero {
+                padding: 100px 0;
+            }
+            .hero h2 {
+                font-size: 2.5em;
+            }
+            .social-proof ul {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-content">
+            <h1 class="logo">Dimas Jardinagem</h1>
+            <button class="menu-toggle" aria-label="Abrir Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#portfolio">Portfólio</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="inicio" class="hero">
+        <div class="container">
+            <h2>Transforme seu Espaço Verde. Conte com a Expertise de Dimas.</h2>
+            <p>Especialista em paisagismo e manutenção, garantindo a saúde e a beleza do seu jardim.</p>
+            <a href="https://wa.me/SEUNUMERO" target="_blank" class="btn btn-primary">
+                <i class="fab fa-whatsapp"></i> Solicite Seu Orçamento Rápido
+            </a>
+        </div>
+    </section>
+
+    <section id="servicos">
+        <div class="container">
+            <h3>Nossos Serviços Exclusivos</h3>
+            <div class="servicos-grid">
+                <div class="servico-item">
+                    <h4>Manutenção Periódica</h4>
+                    <p>Pacotes completos para corte, poda, adubação e limpeza, mantendo seu jardim impecável o ano todo.</p>
+                </div>
+                <div class="servico-item">
+                    <h4>Paisagismo e Projeto</h4>
+                    <p>Desenvolvimento de projetos do zero, seleção de espécies ideais e implantação da área verde dos seus sonhos.</p>
+                </div>
+                <div class="servico-item">
+                    <h4>Podas Técnicas e Tratamentos</h4>
+                    <p>Serviços especializados em podas de árvores e combate profissional contra pragas e doenças.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="light-bg">
+        <div class="container">
+            <h3>Portfólio: Nossos Melhores Trabalhos</h3>
+            <p>A qualidade e o cuidado que dedicamos a cada transformação. Veja o **Antes & Depois**.</p>
+            <div class="portfolio-grid">
+                <div class="portfolio-item"><img src="placeholder-jardim1.jpg" alt="Jardim Residencial Moderno"></div>
+                <div class="portfolio-item"><img src="placeholder-jardim2.jpg" alt="Revitalização de Condomínio"></div>
+                <div class="portfolio-item"><img src="placeholder-jardim3.jpg" alt="Poda Profissional de Frutífera"></div>
+            </div>
+            <a href="#contato" class="btn btn-secondary">Quero um Projeto de Qualidade!</a>
+        </div>
+    </section>
+
+    <section id="sobre">
+        <div class="container">
+            <h3>Sobre Dimas Jardinagem: Confiança e Paixão</h3>
+            <p>Meu nome é Dimas (Audimar Barbosa de Araujo), e a jardinagem é a minha arte. Atuando em **[SUA CIDADE/REGIÃO]**, construí minha reputação no compromisso com a beleza e a saúde das plantas.</p>
+            <p>Somos uma empresa formalizada (CNPJ **40.145.408/0001-76**), o que garante a segurança e o profissionalismo que clientes residenciais e corporativos buscam.</p>
+            <div class="social-proof">
+                <h4>Nossos Diferenciais:</h4>
+                <ul>
+                    <li>🌱 Expertise Comprovada</li>
+                    <li>⏱️ Serviço Rápido e Limpo</li>
+                    <li>🔒 Formalização e Garantia</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="light-bg">
+        <div class="container">
+            <h3>Entre em Contato e Peça Seu Orçamento</h3>
+            <form id="contact-form">
+                <input type="text" name="nome" placeholder="Seu Nome" required>
+                <input type="email" name="email" placeholder="Seu E-mail" required>
+                <input type="tel" name="telefone" placeholder="WhatsApp (DDD) XXXX-XXXX" required>
+                <textarea name="mensagem" placeholder="Descreva o serviço que você precisa e o endereço..." rows="5" required></textarea>
+                <button type="submit" class="btn btn-primary">Enviar Solicitação</button>
+            </form>
+            <p class="whatsapp-info">
+                Prefere falar direto? 
+                <a href="https://wa.me/SEUNUMERO" target="_blank" class="btn btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i> (DDD) XXXX-XXXX
+                </a>
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Dimas Jardinagem. Todos os direitos reservados.</p>
+            <p>CNPJ: 40.145.408/0001-76 | Audimar Barbosa de Araujo</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const nav = document.getElementById('main-nav');
+            const navLinks = nav.querySelectorAll('a');
+
+            // 1. Funcionalidade para Menu Mobile
+            menuToggle.addEventListener('click', function() {
+                nav.classList.toggle('open');
+            });
+
+            // 2. Fechar o menu ao clicar em um link
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    // Timeout para permitir a rolagem suave antes de fechar
+                    setTimeout(() => {
+                        if (nav.classList.contains('open')) {
+                            nav.classList.remove('open');
+                        }
+                    }, 300); 
+                });
+            });
+
+            // 3. Funcionalidade de Envio do Formulário (Apenas um placeholder)
+            const contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    // ESTA PARTE REQUER UM BACKEND (servidor) para realmente enviar os dados.
+                    alert('Sua solicitação foi enviada! Dimas responderá em breve. (Isto é um alerta de demonstração)');
+                    // e.preventDefault(); // Descomente para que a página não recarregue após o envio.
+                });
+            }
+
+        });
+    </script>
+
+</body>
+</html>
