@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <!-- Esta meta tag é essencial para a responsividade, garantindo que a largura do site se ajuste ao dispositivo -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DIMAS | Jardinagem & Serviços: Grama, Limpeza de Lotes e Plantação</title>
     <!-- Carregamento do Tailwind CSS para um design moderno e responsivo -->
@@ -95,13 +96,14 @@
     <header class="bg-dimas-green shadow-xl sticky top-0 z-40">
         <div class="container mx-auto flex justify-between items-center p-4">
             <h1 class="text-3xl font-extrabold text-white tracking-widest">DIMAS</h1>
+            <!-- Nav para Desktop (visível apenas em telas médias e maiores - md:flex) -->
             <nav class="hidden md:flex space-x-6 text-white font-medium">
                 <a href="#inicio" class="hover:text-dimas-accent transition duration-300">Início</a>
                 <a href="#servicos" class="hover:text-dimas-accent transition duration-300">Serviços</a>
                 <a href="#galeria" class="hover:text-dimas-accent transition duration-300">Galeria</a>
                 <a href="#contato" class="hover:text-dimas-accent transition duration-300">Contato</a>
             </nav>
-            <!-- Menu mobile (simplesmente mostra o nome no mobile, pode ser expandido se necessário) -->
+            <!-- Botão de Orçamento para Mobile (escondido em telas médias e maiores - md:hidden) -->
             <button class="md:hidden text-white text-sm border border-white px-3 py-1 rounded hover:bg-white hover:text-dimas-green transition duration-300" onclick="document.getElementById('whatsapp-button').click()">
                 Orçamento
             </button>
@@ -135,6 +137,7 @@
                     Nossos Principais Serviços
                 </h3>
                 
+                <!-- Grid responsivo: 3 colunas no desktop (md:grid-cols-3) e 1 coluna no mobile -->
                 <div class="grid md:grid-cols-3 gap-8">
                     
                     <!-- Card 1: Venda de Grama -->
@@ -187,7 +190,7 @@
                     Confira a transformação que a DIMAS Jardinagem pode fazer no seu espaço.
                 </p>
 
-                <!-- Grid responsivo para as fotos (Story-like) -->
+                <!-- Grid responsivo para as fotos: 2 colunas no mobile (col-span-2), até 5 colunas no desktop (xl:grid-cols-5) -->
                 <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
                     
                     <!-- Item 1: Lote Antes -->
@@ -250,7 +253,7 @@
                         </div>
                     </div>
                     
-                    <!-- Adicione mais itens aqui! -->
+                    <!-- Itens que só aparecem em telas maiores (sm:block, lg:block, xl:block) -->
                     <div class="story-card bg-white rounded-xl shadow-md hidden sm:block">
                         <img src="https://placehold.co/400x550/6B7280/FFFFFF?text=Projeto+Extra" 
                              onerror="this.src='https://placehold.co/400x550/6B7280/FFFFFF?text=Projeto+Extra'"
@@ -298,6 +301,7 @@
                     Fale com a DIMAS hoje mesmo e solicite um orçamento sem compromisso!
                 </p>
                 
+                <!-- Layout responsivo para contato: Vertical no mobile, Horizontal no desktop (md:flex-row) -->
                 <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8">
                     
                     <!-- Botão de Orçamento Principal -->
@@ -363,7 +367,7 @@
         }
 
         // Mensagem de boas-vindas no console
-        console.log("DIMAS Jardinagem & Serviços - Site Inicializado com número de WhatsApp!");
+        console.log("DIMAS Jardinagem & Serviços - Site 100% Responsivo e Inicializado!");
     </script>
 </body>
 </html>
