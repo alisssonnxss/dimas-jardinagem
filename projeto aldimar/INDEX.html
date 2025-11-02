@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIMAS Jardinagem | Excelência em Paisagismo e Manutenção de Lotes</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dimas-green': '#13381B', // Verde Floresta Quase Preto (Muito Sóbrio)
+                        'dimas-light': '#F9FBF9', // Branco Levemente Verde
+                        'dimas-accent': '#B8860B', // Dourado Nobre (Goldenrod)
+                        'dimas-text': '#242424', // Preto Profissional
+                        'dimas-dark': '#101010', // Fundo de Rodapé Premium
+                    },
+                    fontFamily: {
+                        'serif': ['Lora', 'serif'],
+                        'sans': ['Poppins', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        // Sombras Premium e Discretas
+                        'xl-pro': '0 20px 40px rgba(0, 0, 0, 0.1)',
+                        'lg-pro': '0 10px 25px rgba(0, 0, 0, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Estilos de Acessibilidade e Estética */
+        html { scroll-behavior: smooth; }
+
+        /* Estilização Flutuante (WhatsApp) - Mantida para alta conversão */
+        #whatsapp-button {
+            position: fixed; bottom: 24px; right: 24px; z-index: 50;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+            animation: pulse 2s infinite; 
+        }
+
+        #whatsapp-button:hover {
+            transform: scale(1.1); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); animation: none;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Efeito de hover nas fotos da galeria */
+        .story-card {
+            transition: all 0.5s ease-in-out; overflow: hidden; cursor: pointer;
+            border: 1px solid #e9e9e9; 
+        }
+
+        .story-card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 18px 35px rgba(0, 0, 0, 0.15);
+            border-color: #B8860B; 
+        }
+
+        .story-card img { transition: transform 0.5s ease-in-out; }
+        .story-card:hover img { transform: scale(1.1); }
+
+        /* Classes para o Carrossel (Transições mais elegantes) */
+        .slide-hidden {
+            opacity: 0; position: absolute;
+            transition: opacity 1.2s ease-in-out; /* Aumentei o tempo de transição */
+            pointer-events: none;
+            width: 100%;
+        }
+
+        .slide-active {
+            opacity: 1; position: relative;
+            pointer-events: auto;
+        }
+
+        .hero-slides-container {
+            min-height: 280px; /* Maior altura para mais impacto */
+            display: flex; align-items: center; justify-content: center;
+            flex-direction: column; position: relative;
+        }
+    </style>
+</head>
+<body class="bg-dimas-light text-dimas-text font-sans antialiased">
+
+    <a id="whatsapp-button" 
+       href="https://wa.me/5561999084942?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20servi%C3%A7os%20de%20jardinagem%20da%20DIMAS." 
+       target="_blank" 
+       class="flex items-center justify-center w-16 h-16 bg-green-600 hover:bg-green-700 rounded-full text-white">
+        <i class="fab fa-whatsapp text-3xl"></i>
+    </a>
+
+    <header class="bg-white shadow-lg-pro sticky top-0 z-40 border-b-2 border-dimas-green/5">
+        <div class="container mx-auto flex justify-between items-center py-5 px-6">
+            <h1 class="text-3xl font-bold text-dimas-green tracking-wider font-serif">DIMAS <span class="text-dimas-accent">Jardinagem</span></h1>
+            
+            <nav class="hidden md:flex space-x-10 text-dimas-text font-medium tracking-wide">
+                <a href="#inicio" class="relative group transition duration-300">Início
+                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-dimas-accent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                </a>
+                <a href="#autoridade" class="relative group transition duration-300">Por Que DIMAS
+                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-dimas-accent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                </a>
+                <a href="#servicos" class="relative group transition duration-300">Serviços
+                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-dimas-accent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                </a>
+                <a href="#galeria" class="relative group transition duration-300">Portfólio
+                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-dimas-accent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                </a>
+                <a href="#contato" class="relative group transition duration-300">Contato
+                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-dimas-accent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                </a>
+            </nav>
+            
+            <button class="md:hidden text-dimas-green text-sm border border-dimas-green px-3 py-1 rounded hover:bg-dimas-green hover:text-white transition duration-300" onclick="document.getElementById('whatsapp-button').click()">
+                <i class="fab fa-whatsapp mr-1"></i> Orçamento
+            </button>
+        </div>
+    </header>
+
+    <main class="pt-10">
+
+        <section id="inicio" class="relative bg-dimas-green text-white py-24 md:py-40 overflow-hidden shadow-xl-pro">
+            <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'10\' height=\'10\' viewBox=\'0 0 2 2\'><path fill=\'%23FFFFFF\' d=\'M1 0h1v1H1V0zm0 1h1v1H1V1zM0 1h1v1H0V1zm0-1h1v1H0V0z\' fill-opacity=\'.1\'/></svg>');"></div>
+            
+            <div class="container mx-auto px-6 text-center relative z-10 hero-slides-container">
+                
+                <div class="slide-content slide-active" id="slide-1">
+                    <h2 class="text-5xl md:text-7xl font-extrabold mb-4 font-serif leading-snug tracking-tighter">
+                        DIMAS: <span class="text-dimas-accent">Excelência</span> em Paisagismo e Gramados.
+                    </h2>
+                    <p class="text-xl md:text-2xl mb-8 font-light text-dimas-light/90 max-w-4xl mx-auto">
+                        A autoridade em Venda de Grama, Limpeza Técnica de Lotes e Instalação Profissional.
+                    </p>
+                </div>
+
+                <div class="slide-content slide-hidden" id="slide-2">
+                    <h2 class="text-5xl md:text-7xl font-extrabold mb-4 font-serif leading-snug tracking-tighter">
+                        Compromisso com o <span class="text-dimas-accent">Padrão Mais Alto</span> de Qualidade.
+                    </h2>
+                    <p class="text-xl md:text-2xl mb-8 font-light text-dimas-light/90 max-w-4xl mx-auto">
+                        Transformamos o seu terreno em um ativo valioso. Confiança e resultados garantidos.
+                    </p>
+                </div>
+
+                <div class="slide-content slide-hidden" id="slide-3">
+                    <h2 class="text-5xl md:text-7xl font-extrabold mb-4 font-serif leading-snug tracking-tighter">
+                        Seu Investimento Verde, com <span class="text-dimas-accent">Cuidado Técnico</span>.
+                    </h2>
+                    <p class="text-xl md:text-2xl mb-8 font-light text-dimas-light/90 max-w-4xl mx-auto">
+                        Equipe especializada em preparo de solo e plantio de grama para o crescimento saudável.
+                    </p>
+                </div>
+                
+                <a href="#contato" class="inline-flex items-center bg-dimas-accent text-dimas-green font-bold py-4 px-12 rounded-lg text-xl uppercase tracking-widest transition duration-300 transform hover:scale-105 hover:bg-yellow-600 shadow-xl-pro mt-8 relative z-20">
+                    <i class="fas fa-certificate mr-3"></i> CONSULTORIA IMEDIATA
+                </a>
+
+            </div>
+            
+            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3 z-20" id="carousel-dots">
+                </div>
+        </section>
+
+        <section id="autoridade" class="py-20 md:py-28 bg-white border-b border-dimas-green/10">
+            <div class="container mx-auto px-6 text-center">
+                <h3 class="text-3xl md:text-4xl font-bold mb-12 text-dimas-text font-serif">
+                    O Diferencial DIMAS: Qualidade e Confiabilidade
+                </h3>
+                
+                <div class="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+                    
+                    <div class="p-6">
+                        <i class="fas fa-award text-5xl mb-4 text-dimas-accent"></i>
+                        <h4 class="text-xl font-semibold mb-2 text-dimas-green">Grama com Certificação</h4>
+                        <p class="text-dimas-text/70">
+                            Trabalhamos apenas com grama de viveiros certificados, garantindo a procedência, saúde e o pegamento do seu novo gramado.
+                        </p>
+                    </div>
+
+                    <div class="p-6">
+                        <i class="fas fa-toolbox text-5xl mb-4 text-dimas-accent"></i>
+                        <h4 class="text-xl font-semibold mb-2 text-dimas-green">Profissionalismo Técnico</h4>
+                        <p class="text-dimas-text/70">
+                            Nossa equipe segue rigorosos padrões técnicos em roçagem, nivelamento e plantio, assegurando a durabilidade do serviço.
+                        </p>
+                    </div>
+                    
+                    <div class="p-6">
+                        <i class="fas fa-map-marked-alt text-5xl mb-4 text-dimas-accent"></i>
+                        <h4 class="text-xl font-semibold mb-2 text-dimas-green">Logística e Prazo</h4>
+                        <p class="text-dimas-text/70">
+                            Garantimos a entrega rápida da grama fresca e o cumprimento do cronograma na limpeza de lotes, sem atrasos.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="servicos" class="py-20 md:py-28 bg-dimas-light">
+            <div class="container mx-auto px-6">
+                <h3 class="text-4xl md:text-5xl font-bold text-center mb-16 text-dimas-green font-serif border-b-4 border-dimas-accent/50 inline-block pb-2 tracking-tight">
+                    Portfólio de Serviços de Elite
+                </h3>
+                
+                <div class="grid md:grid-cols-3 gap-10">
+                    
+                    <div class="bg-white p-8 rounded-xl shadow-lg-pro transition duration-500 hover:shadow-xl-pro transform hover:-translate-y-1 border-l-4 border-dimas-accent">
+                        <div class="text-6xl mb-4 text-dimas-accent"><i class="fas fa-leaf"></i></div>
+                        <h4 class="text-2xl font-semibold mb-3 text-dimas-green font-serif tracking-tight">Venda de Grama Certificada</h4>
+                        <p class="text-dimas-text/80 text-lg">
+                            Seleção premium de gramas (Esmeralda, São Carlos) entregues com logística fria, prontas para um plantio de sucesso.
+                        </p>
+                        <a href="#" onclick="document.getElementById('whatsapp-button').click()" class="mt-6 block text-dimas-accent font-semibold hover:text-dimas-green transition duration-300 text-base flex items-center">
+                            Orçar m² de Grama <i class="fas fa-chevron-right ml-2 text-sm"></i>
+                        </a>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-xl shadow-lg-pro transition duration-500 hover:shadow-xl-pro transform hover:-translate-y-1 border-l-4 border-dimas-green">
+                        <div class="text-6xl mb-4 text-dimas-green"><i class="fas fa-tractor"></i></div>
+                        <h4 class="text-2xl font-semibold mb-3 text-dimas-green font-serif tracking-tight">Limpeza Técnica de Lotes</h4>
+                        <p class="text-dimas-text/80 text-lg">
+                            Roçagem, capina, retirada de entulhos e preparo profissional para construção ou valorização patrimonial.
+                        </p>
+                        <a href="#" onclick="document.getElementById('whatsapp-button').click()" class="mt-6 block text-dimas-accent font-semibold hover:text-dimas-green transition duration-300 text-base flex items-center">
+                            Solicitar Limpeza <i class="fas fa-chevron-right ml-2 text-sm"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="bg-white p-8 rounded-xl shadow-lg-pro transition duration-500 hover:shadow-xl-pro transform hover:-translate-y-1 border-l-4 border-dimas-accent">
+                        <div class="text-6xl mb-4 text-dimas-accent"><i class="fas fa-seedling"></i></div>
+                        <h4 class="text-2xl font-semibold mb-3 text-dimas-green font-serif tracking-tight">Instalação e Paisagismo</h4>
+                        <p class="text-dimas-text/80 text-lg">
+                            Nivelamento preciso do solo e plantio especializado que garante a melhor adaptação e beleza do seu gramado.
+                        </p>
+                        <a href="#" onclick="document.getElementById('whatsapp-button').click()" class="mt-6 block text-dimas-accent font-semibold hover:text-dimas-green transition duration-300 text-base flex items-center">
+                            Ver Projetos <i class="fas fa-chevron-right ml-2 text-sm"></i>
+                        </a>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <section id="galeria" class="py-20 md:py-28 bg-white">
+            <div class="container mx-auto px-6">
+                <h3 class="text-4xl md:text-5xl font-bold text-center mb-16 text-dimas-green font-serif border-b-4 border-dimas-green/50 inline-block pb-2 tracking-tight">
+                    Nosso Portfólio de Transformação
+                </h3>
+                <p class="text-center text-xl mb-12 text-dimas-text/70 max-w-4xl mx-auto">
+                    Compromisso e resultado. Explore o antes e depois dos projetos de excelência entregues pela DIMAS.
+                </p>
+
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
+                    
+                    <div class="story-card bg-white rounded-xl shadow-md">
+                        <img src="WhatsApp Image 2025-11-02 at 01.33.50 (1).jpeg" 
+                            alt="Lote Antes da Limpeza" class="w-full h-48 object-cover rounded-t-xl" />
+                        <div class="p-4"><p class="font-semibold text-sm text-dimas-green">#AntesRoçagem</p><p class="text-xs text-dimas-text/60">Terreno Bruto</p></div>
+                    </div>
+                    
+                    <div class="story-card bg-white rounded-xl shadow-md">
+                        <img src="WhatsApp Image 2025-11-02 at 01.33.52.jpeg" 
+                            alt="Lote Após a Limpeza" class="w-full h-48 object-cover rounded-t-xl" />
+                        <div class="p-4"><p class="font-semibold text-sm text-dimas-green">#DepoisLimpeza</p><p class="text-xs text-dimas-text/60">Pronto p/ Obra</p></div>
+                    </div>
+
+                    <div class="story-card bg-white rounded-xl shadow-md">
+                        <img src="WhatsApp Image 2025-11-02 at 01.33.51 (2).jpeg" 
+                            alt="Rolos de Grama Fresca" class="w-full h-48 object-cover rounded-t-xl" />
+                        <div class="p-4"><p class="font-semibold text-sm text-dimas-green">#EntregaPremium</p><p class="text-xs text-dimas-text/60">Grama Esmeralda</p></div>
+                    </div>
+
+                    <div class="story-card bg-white rounded-xl shadow-md">
+                        <img src="WhatsApp Image 2025-11-02 at 01.33.51 (4).jpeg" 
+                            alt="Processo de Instalação de Grama" class="w-full h-48 object-cover rounded-t-xl" />
+                        <div class="p-4"><p class="font-semibold text-sm text-dimas-green">#Instalação</p><p class="text-xs text-dimas-text/60">Nivelamento Fino</p></div>
+                    </div>
+                    
+                    <div class="story-card bg-white rounded-xl shadow-md">
+                        <img src="WhatsApp Image 2025-11-02 at 01.33.51 (1).jpeg" 
+                            alt="Gramado/Jardim Finalizado" class="w-full h-48 object-cover rounded-t-xl" />
+                        <div class="p-4"><p class="font-semibold text-sm text-dimas-green">#JardimPerfeito</p><p class="text-xs text-dimas-text/60">Finalizado</p></div>
+                    </div>
+                    
+                    <div class="story-card bg-white rounded-xl shadow-md hidden sm:block">
+                        <img src="WhatsApp Image 2025-11-02 at 01.33.52.jpeg" 
+                            alt="Projeto Adicional Antes" class="w-full h-48 object-cover rounded-t-xl" />
+                        <div class="p-4"><p class="font-semibold text-sm text-dimas-green">#Manutenção</p><p class="text-xs text-dimas-text/60">Poda e Adubo</p></div>
+                    </div>
+                    
+                    <div class="story-card bg-white rounded-xl shadow-md hidden lg:block">
+                        <img src="WhatsApp Image 2025-11-02 at 01.33.51 (3).jpeg" 
+                            alt="Trabalho de Paisagismo" class="w-full h-48 object-cover rounded-t-xl" />
+                        <div class="p-4"><p class="font-semibold text-sm text-dimas-green">#Paisagismo</p><p class="text-xs text-dimas-text/60">Design Floral</p></div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="py-20 md:py-28 bg-dimas-green text-white">
+            <div class="container mx-auto px-6 text-center">
+                <h3 class="text-4xl md:text-5xl font-extrabold mb-4 font-serif tracking-tight">
+                    Fale com Nossos Especialistas Hoje
+                </h3>
+                <p class="text-xl mb-10 opacity-90 max-w-4xl mx-auto">
+                    Clique abaixo e inicie sua consultoria gratuita via WhatsApp. Compromisso com seu projeto.
+                </p>
+                
+                <div class="flex flex-col md:flex-row justify-center items-center space-y-6 md:space-y-0 md:space-x-12">
+                    
+                    <a href="https://wa.me/5561999084942?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20servi%C3%A7os%20de%20jardinagem%20da%20DIMAS." target="_blank"
+                       class="inline-flex items-center bg-dimas-accent text-dimas-green font-bold py-5 px-16 rounded-xl text-2xl uppercase tracking-widest transition duration-300 transform hover:scale-105 hover:shadow-xl-pro shadow-md w-full md:w-auto text-center">
+                        <i class="fab fa-whatsapp mr-3"></i> SOLICITAR ORÇAMENTO
+                    </a>
+
+                    <div class="text-left p-4 rounded-lg">
+                        <p class="font-bold text-xl mb-2 flex items-center"><i class="fas fa-phone mr-3 text-dimas-accent"></i> Telefone: (61) 99908-4942</p>
+                        <p class="font-bold text-xl flex items-center"><i class="fas fa-envelope mr-3 text-dimas-accent"></i> Email: contato@dimasjardinagem.com.br</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-dimas-dark text-dimas-light py-10">
+        <div class="container mx-auto px-6 text-center text-sm">
+            <p class="mb-4 text-base font-semibold">DIMAS Jardinagem | Excelência em Cada Detalhe</p>
+            <div class="space-x-6 text-base mb-4">
+                <a href="#inicio" class="hover:text-dimas-accent transition duration-300">Início</a>
+                <a href="#servicos" class="hover:text-dimas-accent transition duration-300">Serviços</a>
+                <a href="#galeria" class="hover:text-dimas-accent transition duration-300">Portfólio</a>
+            </div>
+            <p class="mt-4 opacity-70">&copy; 2025 DIMAS Jardinagem. Todos os direitos reservados. | CNPJ: 00.000.000/0001-00</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Funcionalidade do Carrossel de Frases (Otimizado) ---
+            const slides = document.querySelectorAll('.slide-content');
+            const dotsContainer = document.getElementById('carousel-dots');
+            let currentSlide = 0;
+            const intervalTime = 7000; // Tempo de exibição um pouco maior (7 segundos)
+
+            // 1. Cria os indicadores (dots)
+            slides.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.classList.add('w-3', 'h-3', 'rounded-full', 'bg-white', 'cursor-pointer', 'transition', 'duration-500');
+                dot.setAttribute('data-slide-to', index);
+                dotsContainer.appendChild(dot);
+            });
+
+            const dots = dotsContainer.querySelectorAll('div');
+
+            function updateDots() {
+                dots.forEach((dot, i) => {
+                    if (i === currentSlide) {
+                        dot.classList.add('opacity-100', 'ring-2', 'ring-dimas-accent');
+                    } else {
+                        dot.classList.remove('opacity-100', 'ring-2', 'ring-dimas-accent');
+                        dot.classList.add('opacity-50');
+                    }
+                });
+            }
+
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    if (i === index) {
+                        slide.classList.remove('slide-hidden');
+                        slide.classList.add('slide-active');
+                    } else {
+                        slide.classList.remove('slide-active');
+                        slide.classList.add('slide-hidden');
+                    }
+                });
+                updateDots();
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            }
+
+            // Inicia o carrossel
+            showSlide(currentSlide);
+            setInterval(nextSlide, intervalTime);
+
+            // Adiciona funcionalidade aos dots
+            dots.forEach(dot => {
+                dot.addEventListener('click', (e) => {
+                    const slideIndex = parseInt(e.target.getAttribute('data-slide-to'));
+                    currentSlide = slideIndex;
+                    showSlide(currentSlide);
+                });
+            });
+
+            console.log("DIMAS Jardinagem - Versão Premium Ativa.");
+        });
+    </script>
+</body>
+</html>
